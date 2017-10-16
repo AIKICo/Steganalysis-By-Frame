@@ -11,5 +11,5 @@ def katz(data, n):
 
 if __name__ == '__main__':
     x = np.random.randint(1, 500, 25)
-    print(katz(x, 25))
+    print(pfd(x, np.diff(x+5)))
 
