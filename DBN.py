@@ -2,6 +2,7 @@ import csv
 import numpy as np
 from sklearn.metrics.classification import accuracy_score
 from dbn.tensorflow import SupervisedDBNClassification
+from sklearn.metrics import classification_report
 
 def loaddata(filename,instanceCol):
     file_reader = csv.reader(open(filename,'r'),delimiter=',')
@@ -25,20 +26,25 @@ def fractal_modeldata(filename):
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
     # relu, sigmoid
-    classifier = SupervisedDBNClassification(hidden_layers_structure=[128, 30],
+    classifier = SupervisedDBNClassification(hidden_layers_structure=[30, 30],
                                              learning_rate_rbm=0.05,
-                                             learning_rate=0.2,
+                                             learning_rate=0.1,
                                              n_epochs_rbm=10,
-                                             n_iter_backprop=2000,
-                                             batch_size=32,
+                                             n_iter_backprop=1000,
+                                             batch_size=16,
                                              activation_function='sigmoid',
                                              dropout_p=0.1,
                                              verbose=0)
 
     classifier.fit(X_train, Y_train)
     Y_pred = classifier.predict(X_test)
-    print(accuracy_score(Y_test, Y_pred))
+    print(accuracy_score(Y_test, Y_pred)*100)
+    print(classification_report(Y_test, Y_pred))
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-hide4pgp-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-7.csv')

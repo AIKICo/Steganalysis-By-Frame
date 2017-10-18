@@ -20,13 +20,13 @@ def fractal_modeldata(filename):
     print(filename)
     X, Y = loaddata(filename, 31)
     np.random.seed(13)
-    indices = np.random.permutation(2030)
-    test_size = int(0.2 * len(indices))
+    indices = np.random.permutation(2038)
+    test_size = int(0.1 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
-    classifier = svm.SVC(kernel='linear')
+    classifier = svm.SVC()
 
     classifier.fit(X_train, Y_train)
     Y_pred = classifier.predict(X_test)

@@ -2,8 +2,11 @@
   <dictionary name="Mohammad Mehnria">
     <words>
       <w>boxcount</w>
+      <w>crossentropy</w>
+      <w>darkorange</w>
       <w>featues</w>
       <w>katz</w>
+      <w>rmsprop</w>
     </words>
   </dictionary>
 </component>

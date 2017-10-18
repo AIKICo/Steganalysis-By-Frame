@@ -19,7 +19,7 @@ def fractal_modeldata(filename):
     print(filename)
     X, Y = loaddata(filename, 31)
     np.random.seed(13)
-    indices = np.random.permutation(2030)
+    indices = np.random.permutation(2038)
     test_size = int(0.2 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
