@@ -1,6 +1,7 @@
 import csv
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
 from sklearn.metrics.classification import accuracy_score
 from sklearn.metrics import classification_report
 
@@ -16,16 +17,18 @@ def loaddata(filename,instanceCol):
 
 
 def fractal_modeldata(filename):
+    scores = []
     print(filename)
     X, Y = loaddata(filename, 31)
     np.random.seed(13)
-    indices = np.random.permutation(2000)
-    test_size = int(0.1 * len(indices))
+    indices = np.random.permutation(2038)
+    test_size = int(0.2 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
-    classifier = GaussianNB();
+    # relu, sigmoid
+    classifier = LinearDiscriminantAnalysis(solver='lsqr')
 
     classifier.fit(X_train, Y_train)
     Y_pred = classifier.predict(X_test)
@@ -34,4 +37,4 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-hide4pgp-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-7.csv')

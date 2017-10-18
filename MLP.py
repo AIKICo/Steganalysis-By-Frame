@@ -35,4 +35,4 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-stools-42.csv')

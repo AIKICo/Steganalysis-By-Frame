@@ -39,9 +39,9 @@ def get_featues(path, csv, label):
 
 if __name__ == '__main__':
     get_featues('D:\\Databases\\Steganalysis\\Normal',
-                'D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-hide4pgp-7.csv', 0)
+                'D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-stools-7.csv', 0)
 
-    get_featues('D:\\Databases\\Steganalysis\\H4PGP\\7',
-                'D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-hide4pgp-7.csv', 1)
+    get_featues('D:\\Databases\\Steganalysis\\S-Tools\\7',
+                'D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-stools-7.csv', 1)
 
 

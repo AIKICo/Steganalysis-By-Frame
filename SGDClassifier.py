@@ -1,6 +1,6 @@
 import csv
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
+from sklearn import linear_model
 from sklearn.metrics.classification import accuracy_score
 from sklearn.metrics import classification_report
 
@@ -16,7 +16,6 @@ def loaddata(filename,instanceCol):
 
 
 def fractal_modeldata(filename):
-    scores = []
     print(filename)
     X, Y = loaddata(filename, 31)
     np.random.seed(13)
@@ -26,9 +25,7 @@ def fractal_modeldata(filename):
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
-    # relu, sigmoid
-    classifier = RandomForestClassifier(max_depth=6, random_state=0)
-
+    classifier = linear_model.SGDClassifier()
     classifier.fit(X_train, Y_train)
     Y_pred = classifier.predict(X_test)
     print(accuracy_score(Y_test, Y_pred)*100)
@@ -36,4 +33,4 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal-Features-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-7.csv')
