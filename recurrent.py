@@ -20,7 +20,7 @@ def loaddata(filename,instanceCol):
 def fractal_modeldata(filename):
     scores = []
     print(filename)
-    X, Y = loaddata(filename, 31)
+    X, Y = loaddata(filename, 27)
     np.random.seed(13)
     indices = np.random.permutation(2038)
     test_size = int(0.1 * len(indices))
@@ -29,7 +29,7 @@ def fractal_modeldata(filename):
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
     model = Sequential()
-    model.add(Dense(512, input_dim=31, activation='relu'))
+    model.add(Dense(512, input_dim=27, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
@@ -39,7 +39,7 @@ def fractal_modeldata(filename):
                   optimizer='rmsprop',
                   metrics=['accuracy'])
 
-    model.fit(X_train, Y_train, epochs=300, batch_size=1, verbose=2)
+    model.fit(X_train, Y_train, epochs=10, batch_size=1, verbose=0)
     score = model.evaluate(X_test, Y_test, batch_size=16)
     classes = model.predict_classes(X_test, batch_size=1)
     print(score)
@@ -48,4 +48,8 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-7.csv')

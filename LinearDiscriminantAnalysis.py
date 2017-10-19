@@ -19,7 +19,7 @@ def loaddata(filename,instanceCol):
 def fractal_modeldata(filename):
     scores = []
     print(filename)
-    X, Y = loaddata(filename, 31)
+    X, Y = loaddata(filename, 14)
     np.random.seed(13)
     indices = np.random.permutation(2038)
     test_size = int(0.2 * len(indices))
@@ -28,7 +28,7 @@ def fractal_modeldata(filename):
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
     # relu, sigmoid
-    classifier = LinearDiscriminantAnalysis(solver='lsqr')
+    classifier = LinearDiscriminantAnalysis()
 
     classifier.fit(X_train, Y_train)
     Y_pred = classifier.predict(X_test)
@@ -37,4 +37,8 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-7.csv')
