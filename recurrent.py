@@ -5,6 +5,7 @@ from keras.layers import Dense, Dropout
 from sklearn.metrics.classification import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import roc_curve
+from craigslist_sample.items import CCraigslistSampleItem
 
 
 def loaddata(filename,instanceCol):
@@ -39,7 +40,7 @@ def fractal_modeldata(filename):
                   optimizer='rmsprop',
                   metrics=['accuracy'])
 
-    model.fit(X_train, Y_train, epochs=10, batch_size=1, verbose=0)
+    model.fit(X_train, Y_train, epochs=10, batch_size=1, verbose=2)
     score = model.evaluate(X_test, Y_test, batch_size=16)
     classes = model.predict_classes(X_test, batch_size=1)
     print(score)
