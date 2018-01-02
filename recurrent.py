@@ -5,7 +5,6 @@ from keras.layers import Dense, Dropout
 from sklearn.metrics.classification import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import roc_curve
-from craigslist_sample.items import CCraigslistSampleItem
 
 
 def loaddata(filename,instanceCol):
@@ -13,7 +12,7 @@ def loaddata(filename,instanceCol):
     x = []
     y = []
     for row in file_reader:
-        x.append(row[0:instanceCol])
+        x.append(row[0:len(row)-1])
         y.append(row[-1])
     return np.array(x[1:]).astype((np.float32)), np.array(y[1:]).astype(np.int)
 
@@ -21,16 +20,16 @@ def loaddata(filename,instanceCol):
 def fractal_modeldata(filename):
     scores = []
     print(filename)
-    X, Y = loaddata(filename, 27)
+    X, Y = loaddata(filename, 33)
     np.random.seed(13)
-    indices = np.random.permutation(2038)
+    indices = np.random.permutation(947)
     test_size = int(0.1 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
     model = Sequential()
-    model.add(Dense(512, input_dim=27, activation='relu'))
+    model.add(Dense(512, input_dim=32, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
@@ -49,8 +48,8 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-100.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-71.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-42.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-21.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LogFBank\\LogFBank-Features-hide4pgp-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-7.csv')

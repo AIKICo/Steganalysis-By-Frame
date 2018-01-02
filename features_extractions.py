@@ -1,6 +1,7 @@
 import numpy as np
 import math as ma
 import os
+from pywt import wavedec
 from pyeeg import hfd, pfd
 from scipy.io import wavfile as wav
 from python_speech_features.sigproc import framesig
@@ -104,12 +105,44 @@ def get_logfbankfeatues(path, csv, label):
     print(np.asarray(features_vector).shape)
 
 
+def get_wavelet(path, csv, label):
+    root, _, files = next(os.walk(path))
+    fractal_features =[]
+    features_vector = DataFrame()
+    audio_counter = 1
+    for file in files:
+        _, data = wav.read(root + '\\' + file)
+        frames = framesig(data, 1000, 500)
+        for frame in frames:
+            frame_features = []
+            (cA, cD5, cD4, cD3, cD2, cD1) = wavedec(frame,'db1', level=5)
+            for i in range(0, len(cA)):
+                frame_features.append(cA[i])
+            frame_features.append(label)
+            fractal_features.append(frame_features)
+        print(str(audio_counter) + '==>' + file)
+        audio_counter += 1
+    features_vector = DataFrame(fractal_features)
+    features_vector.to_csv(csv, index=False, header=False, mode='a')
+    print(np.asarray(features_vector).shape)
+
 if __name__ == '__main__':
-    get_logfbankfeatues('D:\\Databases\\Steganalysis\\Normal',
-                    'D:\\Databases\\Steganalysis\\Dataset\\LogFBank-Features-steghide-7.csv', 0)
+    #get_wavelet('D:\\Databases\\Steganalysis\\Normal',
+                    #'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-Hide4PGP-7.csv', 0)
 
-    get_logfbankfeatues('D:\\Databases\\Steganalysis\\steghide\\7',
-                        'D:\\Databases\\Steganalysis\\Dataset\\LogFBank-Features-steghide-7.csv', 1)
+    get_wavelet('D:\\Databases\\Steganalysis\\H4PGP\\7',
+                        'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-hide4pgp-7.csv', 1)
 
+    get_wavelet('D:\\Databases\\Steganalysis\\H4PGP\\21',
+                        'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-hide4pgp-21.csv', 1)
+
+    get_wavelet('D:\\Databases\\Steganalysis\\H4PGP\\42',
+                        'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-hide4pgp-42.csv', 1)
+
+    get_wavelet('D:\\Databases\\Steganalysis\\H4PGP\\71',
+                        'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-hide4pgp-71.csv', 1)
+
+    get_wavelet('D:\\Databases\\Steganalysis\\H4PGP\\100',
+                        'D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-hide4pgp-100.csv', 1)
 
 
