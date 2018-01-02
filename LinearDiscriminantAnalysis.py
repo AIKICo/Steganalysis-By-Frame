@@ -37,9 +37,9 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-100.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-71.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-42.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-21.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LPC\\lpc-Features-Hide4PGP-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LPC\\lpc-Features-Hide4PGP-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LPC\\lpc-Features-Hide4PGP-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LPC\\lpc-Features-Hide4PGP-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\LPC\\lpc-Features-Hide4PGP-7.csv')
 

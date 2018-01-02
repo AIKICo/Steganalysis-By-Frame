@@ -22,7 +22,7 @@ def fractal_modeldata(filename):
     print(filename)
     X, Y = loaddata(filename, 27)
     np.random.seed(13)
-    indices = np.random.permutation(947)
+    indices = np.random.permutation(2038)
     test_size = int(0.3 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
@@ -39,8 +39,8 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-100.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-71.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-42.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-21.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-7.csv')
