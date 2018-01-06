@@ -4,7 +4,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from sklearn.metrics.classification import accuracy_score
 from sklearn.metrics import classification_report
-from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
 
 
 def loaddata(filename,instanceCol):
@@ -22,14 +22,14 @@ def fractal_modeldata(filename):
     print(filename)
     X, Y = loaddata(filename, 33)
     np.random.seed(13)
-    indices = np.random.permutation(947)
+    indices = np.random.permutation(2038)
     test_size = int(0.1 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
     Y_test = Y[indices[-test_size:]]
     model = Sequential()
-    model.add(Dense(512, input_dim=32, activation='relu'))
+    model.add(Dense(512, input_dim=30, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
@@ -39,17 +39,17 @@ def fractal_modeldata(filename):
                   optimizer='rmsprop',
                   metrics=['accuracy'])
 
-    model.fit(X_train, Y_train, epochs=10, batch_size=1, verbose=2)
+    model.fit(X_train, Y_train, epochs=10, batch_size=1, verbose=0)
     score = model.evaluate(X_test, Y_test, batch_size=16)
     classes = model.predict_classes(X_test, batch_size=1)
-    print(score)
     print(accuracy_score(Y_test, np.asarray(classes))*100)
     print(classification_report(Y_test, np.asarray(classes)))
+    print(roc_auc_score(Y_test, np.asarray(classes)))
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-100.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-71.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-42.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-21.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Wavelet\\wavelet-Features-steghide-7.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-100.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-71.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-42.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-21.csv')
+    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-steghide-7.csv')
