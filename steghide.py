@@ -1,4 +1,4 @@
-import os;
+import os
 from subprocess import Popen, PIPE
 
 root, dirs, files = next(os.walk('D:\\Databases\\Steganalysis\\Outguess\\100'))
