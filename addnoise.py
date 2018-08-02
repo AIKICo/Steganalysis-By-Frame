@@ -1,23 +1,27 @@
-import os
-from subprocess import Popen, PIPE
 import numpy as np
-from scipy.io import wavfile as wav
+import random
+import itertools
+import librosa
+import IPython.display as ipd
 import matplotlib.pyplot as plt
 
-def fn_addnoise(data):
-    i = len(data)
-    npdata = np.asarray(data).reshape((i))
-    u = npdata + np.random.uniform(size=npdata.shape)
-    p = npdata + np.random.laplace(loc=0.0, scale=1.0, size=npdata.shape)
-    return u,p
+
+def load_audio_file(file_path):
+    input_length = 16000
+    data = librosa.core.load(file_path)[0] #, sr=16000
+    if len(data)>input_length:
+        data = data[:input_length]
+    else:
+        data = np.pad(data, (0, max(0, input_length - len(data))), "constant")
+    return data
+
+def plot_time_series(data):
+    fig = plt.figure(figsize=(14, 8))
+    plt.title('Raw wave ')
+    plt.ylabel('Amplitude')
+    plt.plot(np.linspace(0, 1, len(data)), data)
+    plt.show()
 
 if __name__=="__main__":
-    root, dirs, files = next(os.walk('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal'))
-
-    for file in files:
-        if file.lower().endswith('.wav'):
-            rate, data = wav.read(root+'\\'+file)
-            plt.plot(data)
-            wn = np.random.randn(len(data))
-            data_wn = data + 0.005*wn
-            wav.write('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\NormalNoise\\'+file, rate, data_wn) 
+    data = load_audio_file("D:\\MySourceCodes\Projects-Python\\Steganalysis-By-Frame\SteganalysisDatasets\\Normal\\PDAm01_009_3.wav")    
+    plot_time_series(data) 

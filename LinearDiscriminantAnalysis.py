@@ -20,10 +20,10 @@ def loaddata(filename,instanceCol):
 def fractal_modeldata(filename):
     scores = []
     print(filename)
-    X, Y = loaddata(filename, 33)
+    X, Y = loaddata(filename, 5)
     np.random.seed(13)
-    indices = np.random.permutation(2038)
-    test_size = int(0.2 * len(indices))
+    indices = np.random.permutation(1127)
+    test_size = int(0.1 * len(indices))
     X_train = X[indices[:-test_size]]
     Y_train = Y[indices[:-test_size]]
     X_test = X[indices[-test_size:]]
@@ -39,10 +39,11 @@ def fractal_modeldata(filename):
 
 
 if __name__ == '__main__':
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-100.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-71.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-42.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-21.csv')
-    fractal_modeldata('D:\\Databases\\Steganalysis\\Dataset\\Fractal\\Fractal-Features-hide4pgp-7.csv')
+    root = 'D:\\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\'
+    fractal_modeldata(root + 'noisywavlet-Features-steghide-100.csv')
+    fractal_modeldata(root + 'noisywavlet-Features-steghide-71.csv')
+    fractal_modeldata(root + 'noisywavlet-Features-steghide-42.csv')
+    fractal_modeldata(root + 'noisywavlet-Features-steghide-21.csv')
+    fractal_modeldata(root + 'noisywavlet-Features-steghide-7.csv')
 
 

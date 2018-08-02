@@ -176,22 +176,31 @@ def get_lpc(path, csv, label):
 
 
 if __name__ == '__main__':
-    #get_deltamfccfeatues('D:\\Databases\\Steganalysis\\Normal',
-                         #'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-Hide4PGP-7.csv', 0)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-7.csv', 0)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-21.csv', 0)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-42.csv', 0)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-71.csv', 0)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Normal',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-100.csv', 0)
 
-    get_fractalfeatues('D:\\Databases\\Steganalysis\\StegHide\\7',
-                        'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-steghide-7.csv', 1)
 
-    get_fractalfeatues('D:\\Databases\\Steganalysis\\StegHide\\21',
-                        'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-steghide-21.csv', 1)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\StegHide\\7',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-7.csv', 1)
 
-    get_fractalfeatues('D:\\Databases\\Steganalysis\\StegHide\\42',
-                        'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-steghide-42.csv', 1)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\StegHide\\21',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-21.csv', 1)
 
-    get_fractalfeatues('D:\\Databases\\Steganalysis\\StegHide\\71',
-                        'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-steghide-71.csv', 1)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\StegHide\\42',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-42.csv', 1)
 
-    get_fractalfeatues('D:\\Databases\\Steganalysis\\StegHide\\100',
-                        'D:\\Databases\\Steganalysis\\Dataset\\DeltaMFCC\\deltamfcc-Features-steghide-100.csv', 1)
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\StegHide\\71',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-71.csv', 1)
+
+    get_wavelet('D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\NoiseData\\StegHide\\100',
+                        'D:\\MySourceCodes\\Projects-Python\\Steganalysis-By-Frame\\SteganalysisDatasets\\Dataset\Fractal\\noisywavlet-Features-steghide-100.csv', 1)
 
 
